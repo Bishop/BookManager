@@ -2,7 +2,7 @@
 
 import os
 def project_path(*paths):
-    os.path.join(os.path.dirname(__file__), *paths)
+    return os.path.join(os.path.dirname(__file__), *paths)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
