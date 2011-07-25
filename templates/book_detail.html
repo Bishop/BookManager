@@ -4,6 +4,9 @@
     <h1>{{ book.title }}</h1>
 
     <div>
+        <a href="{% url update_book book.pk %}">Edit</a>
+    </div>
+    <div>
         {{ book.author }}
     </div>
 {% endblock %}

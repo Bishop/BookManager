@@ -14,6 +14,7 @@ class BookCreateView(CreateView):
 
 class BookUpdateView(UpdateView):
     model = Book
+    template_name = 'book_form.html'
 
 class BookDetail(DetailView):
     model = Book
