@@ -1,3 +1,4 @@
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.forms.models import ModelForm
 
@@ -15,6 +16,9 @@ class Book(ProtocolModel):
     author = models.TextField()
     year = models.DateField()
     pages = models.IntegerField(**nullable)
+
+    def get_absolute_url(self):
+        return reverse('book_detail', args=[self.pk])
 
 
 class BookForm(ModelForm):
