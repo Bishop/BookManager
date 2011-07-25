@@ -4,8 +4,25 @@
 
     <ul>
         {% for book in books %}
-        <li>{{ book.title }} ({{ book.author }}) {{ book.year|date:'Y' }}</li>
+            <li>{{ book.title }} ({{ book.author }}) {{ book.year|date:'Y' }}</li>
         {% endfor %}
     </ul>
-    
+
+    {% if is_paginated %}
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="{% url book_list %}page{{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current_page">
+                Page {{ page_obj.number }}
+            </span>
+            {% if page_obj.has_next %}
+                <a href="{% url book_list %}page{{ page_obj.next_page_number }}">next</a>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <p><a href="{% url create_book %}">Add book</a></p>
+
 {% endblock %}

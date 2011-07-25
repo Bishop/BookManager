@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'books.views.home', name='home'),
     # url(r'^books/', include('books.foo.urls')),
-    url(r'^books/(page(?P<page>[0-9]+)/)?$', BookListView.as_view(queryset=Book.objects.all())),
+    url(r'^books/(page(?P<page>[0-9]+)/)?$', BookListView.as_view(queryset=Book.objects.all()), name='book_list'),
     url(r'^books/add/$', BookCreateView.as_view(), name='create_book'),
     url(r'^books/update/(?P<id>[0-9]+)/$', UpdateView.as_view()),
 
