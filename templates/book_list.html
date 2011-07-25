@@ -1,5 +1,7 @@
 {% extends 'layout.html' %}
 
+{% load i18n %}
+
 {% block content %}
 
     <ul>
@@ -11,18 +13,20 @@
     {% if is_paginated %}
         <div class="pagination">
             {% if page_obj.has_previous %}
-                <a href="{% url book_list %}page{{ page_obj.previous_page_number }}">previous</a>
+                <a href="{% url book_list %}page{{ page_obj.previous_page_number }}">{% trans 'previous' %}</a>
             {% endif %}
 
             <span class="current_page">
-                Page {{ page_obj.number }}
+                {% blocktrans with page_no=page_obj.number %}
+                Page {{ page_no }}
+                {% endblocktrans %}
             </span>
             {% if page_obj.has_next %}
-                <a href="{% url book_list %}page{{ page_obj.next_page_number }}">next</a>
+                <a href="{% url book_list %}page{{ page_obj.next_page_number }}">{% trans 'next' %}</a>
             {% endif %}
         </div>
     {% endif %}
 
-    <p><a href="{% url create_book %}">Add book</a></p>
+    <p><a href="{% url create_book %}">{% trans 'Add book' %}</a></p>
 
 {% endblock %}

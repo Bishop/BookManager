@@ -1,5 +1,7 @@
 {% extends 'layout.html' %}
 
+{% load i18n %}
+
 {% block content %}
     
 <form action="{% url create_book %}" method="post">
@@ -7,7 +9,7 @@
     <table>
     {{ form.as_table }}
     </table>
-    <input type="submit" value="{% if book.pk %}Save{% else %}Add{% endif %}">
+    <input type="submit" value="{% if book.pk %}{% trans 'Save' %}{% else %}{% trans 'Add' %}{% endif %}">
 </form>
 
 {% endblock %}

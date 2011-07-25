@@ -1,10 +1,12 @@
 {% extends 'layout.html' %}
 
+{% load i18n %}
+
 {% block content %}
     <h1>{{ book.title }}</h1>
 
     <div>
-        <a href="{% url update_book book.pk %}">Edit</a>
+        <a href="{% url update_book book.pk %}">{% trans 'Edit' %}</a>
     </div>
     <div>
         {{ book.author }}
