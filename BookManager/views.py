@@ -1,5 +1,5 @@
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.list import ListView
 from BookManager.models import Book
 
@@ -11,6 +11,9 @@ class BookListView(ListView):
 class BookCreateView(CreateView):
     model = Book
     template_name = 'book_form.html'
+
+class BookUpdateView(UpdateView):
+    model = Book
 
 class BookDetail(DetailView):
     model = Book
