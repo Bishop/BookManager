@@ -1,3 +1,11 @@
-{% for book in book_list %}
-    {{ book.title }}
-{% endfor %}
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <ul>
+        {% for book in books %}
+        <li>{{ book.title }} ({{ book.author }}) {{ book.year|date:'Y' }}</li>
+        {% endfor %}
+    </ul>
+    
+{% endblock %}
