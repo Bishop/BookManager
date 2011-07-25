@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms.models import ModelForm
 
 nullable = {'null': True, 'blank': True}
 
@@ -16,3 +17,8 @@ class Book(ProtocolModel):
     edition = models.CharField(max_length=50, **nullable)
     publisher = models.CharField(max_length=150, **nullable)
     pages = models.IntegerField(**nullable)
+
+
+class BookForm(ModelForm):
+    class Meta:
+        model = Book
