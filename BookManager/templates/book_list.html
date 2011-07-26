@@ -27,6 +27,8 @@
         </div>
     {% endif %}
 
-    <p><a href="{% url create_book %}">{% trans 'Add book' %}</a></p>
+{% endblock %}
 
+{% block menu_context %}
+    <a href="{% url create_book %}">{% trans 'Add book' %}</a>
 {% endblock %}

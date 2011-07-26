@@ -6,14 +6,30 @@
     <title>{% block page_title %}{% endblock %}</title>
     <!-- Source File -->
     {% block css_link %}
-    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssgrids/grids-min.css">
     {% endblock %}
 </head>
 
 <body>
 
-{% block content %}
-{% endblock %}
+<div class="yui3-g">
+    <div class="yui3-u"></div>
+    <div class="yui3-u-1">
+        <div class="yui3-g">
+            <div class="yui3-u-5-8">
+                {% block content %}
+                {% endblock %}
+            </div>
+            <div class="yui3-u-3-8">
+                <div class="yui3-g">
+                    <div class="yui3-u-1-2">{% block menu_context %}{% endblock %}</div>
+                    <div class="yui3-u-1-2">Menu</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 
