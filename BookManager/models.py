@@ -20,6 +20,19 @@ class Book(ProtocolModel):
     def get_absolute_url(self):
         return reverse('book_detail', args=[self.pk])
 
+class File(ProtocolModel):
+    book = models.ForeignKey(Book)
+    path = models.URLField()
+    note = models.TextField(**nullable)
+
+class Publisher(ProtocolModel):
+    title = models.CharField(max_length=100, unique=True)
+    url = models.URLField(unique=True, **nullable)
+
+class Edition(ProtocolModel):
+    isbn = models.CharField(max_length=20)
+    book = models.ForeignKey(Book)
+    publisher = models.ForeignKey(Publisher, **nullable)
 
 class BookForm(ModelForm):
     class Meta:
