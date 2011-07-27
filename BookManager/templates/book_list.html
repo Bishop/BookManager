@@ -4,9 +4,15 @@
 
 {% block content %}
 
-    <ul>
+    <ul class="books">
         {% for book in books %}
-            <li><a href="{% url book_detail book.pk %}">{{ book.title }} ({{ book.author }}) {{ book.year|date:'Y' }}</a></li>
+            <li class="{% cycle 'even' 'odd' %}">
+                <a href="{% url book_detail book.pk %}">
+                    <div class="book_title">{{ book.title }}</div>
+                    <div class="book_author">{{ book.author }}</div>
+                    <div class="book_date">{{ book.year|date:'Y' }}</div>
+                </a>
+            </li>
         {% endfor %}
     </ul>
 
@@ -18,7 +24,7 @@
 
             <span class="current_page">
                 {% blocktrans with page_no=page_obj.number %}
-                Page {{ page_no }}
+                    Page {{ page_no }}
                 {% endblocktrans %}
             </span>
             {% if page_obj.has_next %}

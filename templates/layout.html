@@ -9,6 +9,51 @@
         <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
         <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssgrids/grids-min.css">
     {% endblock %}
+
+    <style type="text/css">
+        {% block css_rule %}
+            body {
+                font: 76%/1.6 "Lucida Grande", "Bitstream Vera Sans", Verdana, sans-serif
+            }
+            .odd {
+                background-color: #edf3fe;
+            }
+            ul.books a {
+                display: block;
+                padding: 0 1em;
+                line-height: 2em;
+                text-decoration: none;
+                color: #5B80B2;
+            }
+            ul.books a:hover,
+            ul.books a:hover div {
+                background: #5b80b2;
+                color: #fff;
+            }
+            ul.books div {
+                display: inline-block;
+                *display: inline;
+                zoom: 1;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            ul.books div.book_title {
+                width: 60%;
+                font-weight: bold;
+                font-size: 0.9em;
+            }
+            ul.books div.book_author {
+                width: 30%;
+                font-size: 0.9em;
+            }
+            ul.books div.book_date {
+                width: 9%;
+                font-size: 0.8em;
+                color: #999;
+            }
+        {% endblock %}
+    </style>
 </head>
 
 <body>
