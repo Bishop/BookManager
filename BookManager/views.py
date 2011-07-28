@@ -4,7 +4,7 @@ from django.views.generic.list import ListView
 from BookManager.models import Book, FileForm, File
 
 class BookListView(ListView):
-    paginate_by = 10
+    paginate_by = 50
     template_name = 'book_list.html'
     context_object_name = 'books'
 

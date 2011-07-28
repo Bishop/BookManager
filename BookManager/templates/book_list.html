@@ -16,6 +16,8 @@
         {% endfor %}
     </ul>
 
+    <p>{% blocktrans with displayed=books.count all=paginator.count%}Displayed {{ displayed }} books from {{ all }}.{% endblocktrans %}</p>
+
     {% if is_paginated %}
         <div class="pagination">
             {% if page_obj.has_previous %}
