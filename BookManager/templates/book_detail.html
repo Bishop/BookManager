@@ -3,26 +3,52 @@
 {% load i18n %}
 
 {% block content %}
-    <h1>{{ book.title }}</h1>
+    <div id="book_detail">
+        <h1>{{ book.title }}</h1>
 
-    <div>
-        <a href="{% url update_book book.pk %}">{% trans 'Edit' %}</a>
-    </div>
-    <div>
-        {{ book.author }}
-    </div>
-    <div>
-        <ul>
-            {% for file in book.file_set.all %}
-                <li>{{ file }}</li>
-            {% endfor %}
-        </ul>
-    </div>
+        <div class="h1_edit_link">
+            <a href="{% url update_book book.pk %}">{% trans 'Edit' %}</a>
+        </div>
 
-    <div>
-        <form method="post" action=".">
-            {{ file_form.as_table }}
-        </form>
+        <div>
+            {{ book.author }}
+        </div>
+
+        <table class="details">
+            <tr>
+                <th>{% trans 'Year:' %}</th>
+                <td>{{ book.year|date:'Y' }}</td>
+            </tr>
+            <tr>
+                <th>{% trans 'Pages:' %}</th>
+                <td>{{ book.pages }}</td>
+            </tr>
+            <tr>
+                <th>{% trans 'ISBN:' %}</th>
+                <td>{{ book.edition_set.all|join:', ' }}</td>
+            </tr>
+            <tr>
+                <th>{% trans 'Publisher:' %}</th>
+                <td>{{ book.publisher_set.all|join:', ' }}</td>
+            </tr>
+        </table>
+
+        <div class="books_files">
+            {% if book.file_set.count %}
+                <p>Files:</p>
+            {% endif %}
+            <ul class="books_files">
+                {% for file in book.file_set.all %}
+                    <li class="{% cycle 'even' 'odd' %}">{{ file }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div>
+            <form method="post" action=".">
+                {{ file_form.as_table }}
+            </form>
+        </div>
     </div>
 {% endblock %}
 
