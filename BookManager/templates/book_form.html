@@ -13,3 +13,7 @@
 </form>
 
 {% endblock %}
+
+{% block menu_context %}
+    <a href="{% url book_list %}">{% trans 'List of books' %}</a>
+{% endblock %}
