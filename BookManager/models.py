@@ -1,5 +1,6 @@
 from django.core.urlresolvers import reverse
 from django.db import models
+from django.db.models import permalink
 from django.forms.models import ModelForm
 from django.forms import HiddenInput
 
@@ -18,8 +19,9 @@ class Book(ProtocolModel):
     year = models.DateField()
     pages = models.IntegerField(**nullable)
 
+    @permalink
     def get_absolute_url(self):
-        return reverse('book_detail', args=[self.pk])
+        return 'book_detail', self.pk
 
     def __unicode__(self):
         return u"{0} ({1}) [{2}]".format(self.title, self.author, self.year)
