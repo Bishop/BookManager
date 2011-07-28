@@ -11,4 +11,12 @@
     <div>
         {{ book.author }}
     </div>
+    <div>
+        <ul>
+            {% for file in book.file_set.all %}
+                <li>{{ file }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
 {% endblock %}
