@@ -26,17 +26,26 @@ class Book(ProtocolModel):
 
 class File(ProtocolModel):
     book = models.ForeignKey(Book)
-    path = models.URLField(verify_exists=False)
+    path = models.CharField(max_length=200)
     note = models.TextField(**nullable)
+
+    def __unicode__(self):
+        return self.path
 
 class Publisher(ProtocolModel):
     title = models.CharField(max_length=100, unique=True)
     url = models.URLField(unique=True, verify_exists=False, **nullable)
 
+    def __unicode__(self):
+        return self.title
+
 class Edition(ProtocolModel):
     isbn = models.CharField(max_length=20)
     book = models.ForeignKey(Book)
     publisher = models.ForeignKey(Publisher, **nullable)
+
+    def __unicode__(self):
+        return self.isbn
 
 class BookForm(ModelForm):
     class Meta:
