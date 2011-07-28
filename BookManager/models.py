@@ -37,6 +37,7 @@ class File(ProtocolModel):
 class Publisher(ProtocolModel):
     title = models.CharField(max_length=100, unique=True)
     url = models.URLField(unique=True, verify_exists=False, **nullable)
+    book = models.ManyToManyField(Book, through='Edition')
 
     def __unicode__(self):
         return self.title
