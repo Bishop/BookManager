@@ -2,6 +2,13 @@
 
 {% load i18n %}
 
+{% block jquery_on_load %}
+    jQuery('.file_form').click(function(e) {
+        e.preventDefault();
+        jQuery('#file_form').slideToggle();
+    }).first().trigger('click');
+{% endblock %}
+
 {% block content %}
     <div id="book_detail">
         <h1>{{ book.title }}</h1>
@@ -34,14 +41,15 @@
         </table>
 
         <div class="books_files">
-            {% if book.file_set.count %}
-                <p>Files:</p>
-            {% endif %}
+            <p>{% trans 'Files:' %}</p>
             <ul class="books_files">
                 {% for file in book.file_set.all %}
                     <li class="{% cycle 'even' 'odd' %}">{{ file }}</li>
+                {% empty %}
+                    <li>{% trans 'No files found' %}</li>
                 {% endfor %}
             </ul>
+            <p><a class="file_form" href="{% url add_file_book book.pk %}">{% trans 'Add File' %}</a></p>
         </div>
 
         <div id="file_form">
@@ -52,7 +60,7 @@
                     <tr>
                         <th>&nbsp;</th>
                         <td>
-                            <input type="submit" value="{% trans 'Add File' %}">
+                            <input type="submit" value="{% trans 'Add File' %}"> {% trans 'or' %} <a class="file_form" href="{% url add_file_book book.pk %}">{% trans 'Cancel' %}</a>
                         </td>
                     </tr>
                 </table>
