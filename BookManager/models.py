@@ -50,6 +50,21 @@ class Edition(ProtocolModel):
     def __unicode__(self):
         return self.isbn
 
+class Author(ProtocolModel):
+    display_name = models.CharField(max_length=200)
+    canonical_name = models.CharField(max_length=200, **nullable)
+    original_name = models.CharField(max_length=200, **nullable)
+    book = models.ManyToManyField(Book, related_name='trusted_author')
+
+    def books_count(self):
+        return self.book.count()
+
+    def __unicode__(self):
+        r = self.display_name
+        if self.canonical_name is not None:
+            r += ' ({0})'.format(self.canonical_name)
+        return r
+
 class BookForm(ModelForm):
     class Meta:
         model = Book
@@ -57,6 +72,13 @@ class BookForm(ModelForm):
 class FileForm(ModelForm):
     class Meta:
         model = File
+        widgets = {
+            'book': HiddenInput(),
+        }
+
+class EditionForm(ModelForm):
+    class Meta:
+        model = Edition
         widgets = {
             'book': HiddenInput(),
         }
