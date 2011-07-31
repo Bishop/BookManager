@@ -21,7 +21,7 @@ class Book(ProtocolModel):
 
     @permalink
     def get_absolute_url(self):
-        return 'book_detail', self.pk
+        return 'book_detail', [self.pk]
 
     def __unicode__(self):
         return u"{0} ({1}) [{2}]".format(self.title, self.author, self.year)
