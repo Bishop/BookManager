@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>{% block page_title %}{% endblock %}</title>
+    <title>{% block page_title %}{{ page_title }}{% endblock %}</title>
 
     {% block css_link %}
         <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">

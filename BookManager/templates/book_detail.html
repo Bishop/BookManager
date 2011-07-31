@@ -2,6 +2,10 @@
 
 {% load i18n %}
 
+{% block page_title %}
+    {{ block.super }} {{ book.title }}
+{% endblock %}
+
 {% block jquery_on_load %}
     jQuery.each(['file_form', 'edition_form'], function(index, name) {
         jQuery('.' + name).click(function(e) {
