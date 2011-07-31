@@ -2,7 +2,10 @@ from django.contrib import admin
 from BookManager.models import Book, Publisher, Edition, File, Author
 
 class BookAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('title', 'author', 'edition')
+
+    def edition(self, obj):
+        return ', '.join([e.isbn for e in obj.edition_set.all()])
 
 class FileAdmin(admin.ModelAdmin):
     pass
