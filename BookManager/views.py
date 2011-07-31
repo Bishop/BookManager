@@ -22,10 +22,15 @@ class BookDetailView(DetailView):
     template_name = 'book_detail.html'
     context_object_name = 'book'
 
-    def render_to_response(self, context, **response_kwargs):
-        context['file_form'] = FileForm(initial={'book': context['object']})
-        context['edition_form'] = EditionForm(initial={'book': context['object']})
-        return super(BookDetailView, self).render_to_response(context, **response_kwargs)
+    def get_context_data(self, **kwargs):
+        context = super(BookDetailView, self).get_context_data(**kwargs)
+
+        context.update({
+            'file_form': FileForm(initial={'book': context['object']}),
+            'edition_form': EditionForm(initial={'book': context['object']})
+        })
+
+        return context
 
     def get(self, request, **kwargs):
         return super(BookDetailView, self).get(request, **kwargs)
