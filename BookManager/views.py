@@ -12,10 +12,19 @@ class BookListView(ListView):
     def get_queryset(self):
         query = super(BookListView, self).get_queryset()
         if self.request.GET.has_key('keyword'):
-            query = query.filter(title__contains=self.request.GET['keyword'])
+            query = query.filter(title__icontains=self.request.GET['keyword'])
             self.paginate_by = query.count()
             self.kwargs.setdefault('page', 1)
         return query
+
+    def get_context_data(self, **kwargs):
+        context = super(BookListView, self).get_context_data(**kwargs)
+
+        if self.request.GET.has_key('keyword'):
+            context['search_value'] = self.request.GET['keyword']
+
+        return context
+
 
 class BookCreateView(CreateView):
     model = Book
