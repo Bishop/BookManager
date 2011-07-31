@@ -9,6 +9,14 @@ class BookListView(ListView):
     template_name = 'book_list.html'
     context_object_name = 'books'
 
+    def get_queryset(self):
+        query = super(BookListView, self).get_queryset()
+        if self.request.GET.has_key('keyword'):
+            query = query.filter(title__contains=self.request.GET['keyword'])
+            self.paginate_by = query.count()
+            self.kwargs.setdefault('page', 1)
+        return query
+
 class BookCreateView(CreateView):
     model = Book
     template_name = 'book_form.html'
