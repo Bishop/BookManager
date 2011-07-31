@@ -19,11 +19,16 @@
     <div id="book_detail">
         <h1 class="h1_single_line">{{ book.title }}</h1>
 
-        <div class="h1_edit_link">
+        <span class="h1_edit_link">
             <a href="{% url update_book book.pk %}">{% trans 'Edit' %}</a>
-        </div>
+        </span>
 
-        <div>
+        <div class="trusted_authors">
+            {% for author in book.trusted_author.all %}
+                {{ author.display_name }}
+            {% endfor %}
+        </div>
+        <div class="authors">
             {{ book.author }}
         </div>
 
