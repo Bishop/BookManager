@@ -13,7 +13,7 @@
 
 {% block content %}
     <div id="book_detail">
-        <h1>{{ book.title }}</h1>
+        <h1 class="h1_single_line">{{ book.title }}</h1>
 
         <div class="h1_edit_link">
             <a href="{% url update_book book.pk %}">{% trans 'Edit' %}</a>
