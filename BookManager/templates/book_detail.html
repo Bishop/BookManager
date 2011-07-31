@@ -3,10 +3,12 @@
 {% load i18n %}
 
 {% block jquery_on_load %}
-    jQuery('.file_form').click(function(e) {
-        e.preventDefault();
-        jQuery('#file_form').slideToggle();
-    }).first().trigger('click');
+    jQuery.each(['file_form', 'edition_form'], function(index, name) {
+        jQuery('.' + name).click(function(e) {
+            e.preventDefault();
+            jQuery('#' + name).toggle();
+        }).first().trigger('click');
+    });
 {% endblock %}
 
 {% block content %}
@@ -39,6 +41,22 @@
                 <td>{{ book.publisher_set.all|join:', ' }}</td>
             </tr>
         </table>
+
+        <p><a class="edition_form" href="{% url add_edition_book book.pk %}">{% trans 'Add Edition Info' %}</a></p>
+        <div id="edition_form">
+            <form method="post" action="{% url add_edition_book book.pk %}">
+                {% csrf_token %}
+                <table>
+                    {{ edition_form.as_table }}
+                    <tr>
+                        <th>&nbsp;</th>
+                        <td>
+                            <input type="submit" value="{% trans 'Add Edition Info' %}"> {% trans 'or' %} <a class="edition_form" href="{% url add_edition_book book.pk %}">{% trans 'Cancel' %}</a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
 
         <div class="books_files">
             <p>{% trans 'Files:' %}</p>

@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.list import ListView
-from BookManager.models import Book, FileForm, File
+from BookManager.models import Book, FileForm, File, EditionForm, Edition
 
 class BookListView(ListView):
     paginate_by = 50
@@ -24,15 +24,13 @@ class BookDetailView(DetailView):
 
     def render_to_response(self, context, **response_kwargs):
         context['file_form'] = FileForm(initial={'book': context['object']})
+        context['edition_form'] = EditionForm(initial={'book': context['object']})
         return super(BookDetailView, self).render_to_response(context, **response_kwargs)
 
     def get(self, request, **kwargs):
         return super(BookDetailView, self).get(request, **kwargs)
 
-
-class BookAddFileView(CreateView):
-    model = File
-
+class BookAddInfoBaseView(CreateView):
     def get(self, request, *args, **kwargs):
         return HttpResponseRedirect(self.get_success_url())
 
@@ -42,9 +40,9 @@ class BookAddFileView(CreateView):
     def form_invalid(self, form):
         return HttpResponseRedirect(self.get_success_url())
 
+class BookAddFileView(BookAddInfoBaseView):
+    model = File
 
+class BookAddEditionView(BookAddInfoBaseView):
+    model = Edition
 
-
-
-
-    

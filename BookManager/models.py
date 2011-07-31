@@ -43,7 +43,7 @@ class Publisher(ProtocolModel):
         return self.title
 
 class Edition(ProtocolModel):
-    isbn = models.CharField(max_length=20)
+    isbn = models.CharField(max_length=20, verbose_name='ISBN', unique=True)
     book = models.ForeignKey(Book)
     publisher = models.ForeignKey(Publisher, **nullable)
 
