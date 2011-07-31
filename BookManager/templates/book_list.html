@@ -4,6 +4,18 @@
 
 {% block content %}
 
+    <div id="search_block">
+        <form action="{% url book_list %}" method="get">
+            <table>
+                <tr>
+                    <td>
+                        <input type="search" name="keyword" placeholder="Search..." value="{{ search_value }}">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
     <ul class="books">
         {% for book in books %}
             <li class="{% cycle 'even' 'odd' %}">
