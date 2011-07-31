@@ -44,9 +44,13 @@
             </ul>
         </div>
 
-        <div>
-            <form method="post" action=".">
-                {{ file_form.as_table }}
+        <div id="file_form">
+            <form method="post" action="{% url add_file_book book.pk %}">
+                {% csrf_token %}
+                <table>
+                    {{ file_form.as_table }}
+                </table>
+                <input type="submit" value="{% trans 'Add File' %}">
             </form>
         </div>
     </div>
