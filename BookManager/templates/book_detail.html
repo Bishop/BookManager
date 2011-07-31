@@ -49,8 +49,13 @@
                 {% csrf_token %}
                 <table>
                     {{ file_form.as_table }}
+                    <tr>
+                        <th>&nbsp;</th>
+                        <td>
+                            <input type="submit" value="{% trans 'Add File' %}">
+                        </td>
+                    </tr>
                 </table>
-                <input type="submit" value="{% trans 'Add File' %}">
             </form>
         </div>
     </div>
