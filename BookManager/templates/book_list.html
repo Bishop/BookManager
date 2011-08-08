@@ -10,6 +10,8 @@
                 <tr>
                     <td>
                         <input type="search" name="keyword" placeholder="Search..." value="{{ search_value }}">
+                        <input type="submit" value="Search">
+                        <a href="{% url book_list %}">{% trans 'Reset' %}</a>
                     </td>
                 </tr>
             </table>
