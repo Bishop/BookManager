@@ -6,14 +6,30 @@
     {{ block.super }} {{ book.title }}
 {% endblock %}
 
-{% block jquery_on_load %}
+{% block jquery_on_load %}{% if False %}<script type="text/javascript">{% endif %}
+
+    jQuery('.h1_single_line').each(function(){
+        var that = jQuery(this);
+        var overlay = jQuery('<h1 class="h1_single_line_popup"></h1>')
+            .text(that.text())
+            .width(that.width())
+            .mouseleave(function(){jQuery(this).hide()})
+            .insertBefore(that);
+        that.mouseenter(function(){
+            if (overlay.height() > that.height()) {
+                overlay.show();
+            }
+        });
+    });
+
     jQuery.each(['file_form', 'edition_form'], function(index, name) {
         jQuery('.' + name).click(function(e) {
             e.preventDefault();
             jQuery('#' + name).toggle();
         }).first().trigger('click');
     });
-{% endblock %}
+
+{% if False %}</script>{% endif %}{% endblock %}
 
 {% block content %}
     <div id="book_detail">

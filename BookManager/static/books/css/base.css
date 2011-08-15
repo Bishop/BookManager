@@ -1,0 +1,162 @@
+h1 {
+    font-size: 2em;
+    font-family: georgia, serif;
+}
+
+.h1_single_line {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-right: 2em;
+}
+
+.h1_single_line_popup {
+    white-space: normal;
+    overflow: auto;
+    position: absolute;
+    background-color: #fff;
+    line-height: 1.2em;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #aaa;
+    margin-left: -0.2em;
+    padding: 0.2em 0 0.2em 0.2em;
+    display: none;
+}
+
+.h1_edit_link {
+    line-height: 3.2em;
+    display: block;
+    float: right;
+    margin-top: -3.2em;
+}
+
+a {
+    color: #5B80B2;
+}
+
+#book_detail {
+    margin-left: 1em;
+}
+
+#book_detail div,
+#book_detail table {
+    margin-bottom: 1em;
+}
+
+.trusted_authors {
+    clear: right;
+    float: right;
+}
+
+div.books_files p {
+    color: #999;
+}
+
+table.details {
+    font-size: 0.8em;
+}
+
+table.details th {
+    padding-right: 1em;
+    color: #999;
+}
+
+ul.books_files li {
+    margin-left: -1em;
+    padding-left: 1em;
+    color: #5B80B2;
+}
+
+.odd {
+    background-color: #edf3fe;
+}
+
+ul.books a {
+    display: block;
+    padding: 0 1em;
+    line-height: 2.4;
+    text-decoration: none;
+    color: #5B80B2;
+}
+
+ul.books a:hover,
+ul.books a:hover div {
+    background: #5b80b2;
+    color: #fff;
+}
+
+ul.books div {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+ul.books div.book_title {
+    width: 60%;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+ul.books div.book_author {
+    width: 30%;
+    font-size: 0.9em;
+}
+
+ul.books div.book_date,
+ul.books div.book_count {
+    width: 5%;
+    font-size: 0.8em;
+    color: #999;
+}
+
+ul.books div.book_count {
+    width: 3%;
+}
+
+form {
+    padding: 0 1em;
+}
+
+form table th {
+    padding-right: 1em;
+    vertical-align: top;
+    text-align: right;
+    width: 8em;
+}
+
+form table th,
+form table td {
+    padding-bottom: 0.5em;
+}
+
+form table textarea {
+    line-height: 1.6em;
+    height: 3.2em;
+    padding: 0 2px;
+    margin-bottom: -0.5em;
+}
+
+form table {
+    width: 100%;
+}
+
+form table input[type=text],
+form table input[type=search] {
+    line-height: 1.6em;
+    height: 1.6em;
+}
+
+form table input[type=submit] {
+    line-height: 1.6em;
+    height: 2em;
+    padding: 2px 5px;
+}
+
+form table textarea,
+form table input[type=text],
+form table input[type=search] {
+    width: 60%;
+}
