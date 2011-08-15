@@ -1,0 +1,6 @@
+{% extends "layout.html" %}
+
+{% block css_link %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}books/css/base.css">
+{% endblock %}
