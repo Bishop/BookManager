@@ -2,12 +2,13 @@ from django.http import HttpResponseRedirect
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.list import ListView
-from BookManager.models import Book, FileForm, File, EditionForm, Edition
+from BookManager.models import Book, FileForm, File, EditionForm, Edition, Author
 
 class BookListView(ListView):
     paginate_by = 50
     template_name = 'book_list.html'
     context_object_name = 'books'
+    model = Book
 
     def get_queryset(self):
         query = super(BookListView, self).get_queryset()
@@ -68,3 +69,12 @@ class BookAddFileView(BookAddInfoBaseView):
 class BookAddEditionView(BookAddInfoBaseView):
     model = Edition
 
+class AuthorListView(ListView):
+    model = Author
+    template_name = 'author_list.html'
+    context_object_name = 'authors'
+    paginate_by = 50
+
+class AuthorDetailView(DetailView):
+    model = Author
+    template_name = 'author_detail.html'

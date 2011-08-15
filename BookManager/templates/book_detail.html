@@ -41,7 +41,7 @@
 
         <div class="trusted_authors">
             {% for author in book.trusted_author.all %}
-                {{ author.display_name }}
+                <a href="{% url author_detail author.pk %}">{{ author.display_name }}</a>
             {% endfor %}
         </div>
         <div class="authors">

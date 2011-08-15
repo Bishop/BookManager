@@ -1,0 +1,17 @@
+{% extends 'book_base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+
+    <ul class="books">
+        {% for author in authors %}
+            <li class="{% cycle 'even' 'odd' %}">
+                <a href="{% url author_detail author.pk %}">
+                    <div class="">{{ author }}</div>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
