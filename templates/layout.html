@@ -2,6 +2,8 @@
 
 <html>
 
+{% load i18n %}
+
 <head>
     <title>{% block page_title %}{{ page_title }}{% endblock %}</title>
 
@@ -28,6 +30,21 @@
             body {
                 font: 76%/1.6 "Lucida Grande", "Bitstream Vera Sans", Verdana, sans-serif
             }
+
+            #app_menu {
+                margin-left: 1em;
+            }
+
+            #app_menu li {
+                display: inline-block;
+                font-size: 2em;
+                margin: 0 1em 0.5em 0;
+            }
+
+            #app_menu a {
+                color: #5B80B2;
+                text-decoration: none;
+            }
         {% endblock %}
     </style>
 </head>
@@ -35,7 +52,13 @@
 <body>
 
 <div class="yui3-g">
-    <div class="yui3-u"></div>
+    <div class="yui3-u">
+        <ul id="app_menu">
+            <li><a href="{% url home_page %}">{% trans 'Home' %}</a></li>
+            <li><a href="{% url book_list %}">{% trans 'Books' %}</a></li>
+            <li><a href="{% url book_list %}">{% trans 'Authors' %}</a></li>
+        </ul>
+    </div>
     <div class="yui3-u-1">
         <div class="yui3-g">
             <div class="yui3-u-5-8">
