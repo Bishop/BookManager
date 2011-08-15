@@ -1,1 +1,29 @@
 {% extends 'book_base.html' %}
+
+{% load i18n %}
+
+{% block page_title %}
+    {{ block.super }} {{ author }}
+{% endblock %}
+
+{% block content %}
+
+    <div>
+        <h1>{{ author }}</h1>
+
+        <ul class="books">
+            {% for book in author.book.all %}
+                <li class="{% cycle 'even' 'odd' %}">
+                    <a href="{% url book_detail book.pk %}">
+                        <div class="book_title">{{ book.title }}</div>
+                        <div class="book_author">{{ book.author }}</div>
+                        <div class="book_date">{{ book.year|date:'Y' }}</div>
+                        <div class="book_count">{{ book.file_set.count }}</div>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+
+{% endblock %}

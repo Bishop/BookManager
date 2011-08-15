@@ -78,3 +78,4 @@ class AuthorListView(ListView):
 class AuthorDetailView(DetailView):
     model = Author
     template_name = 'author_detail.html'
+    context_object_name = 'author'
