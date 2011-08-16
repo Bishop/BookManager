@@ -1,3 +1,4 @@
+from django.db.models.aggregates import Count
 from django.http import HttpResponseRedirect
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView
@@ -12,6 +13,9 @@ class BookListView(ListView):
 
     def get_queryset(self):
         query = super(BookListView, self).get_queryset()
+
+        query = query.annotate(Count('file'))
+
         if self.request.GET.has_key('keyword'):
             query = query.filter(title__icontains=self.request.GET['keyword'])
             self.paginate_by = query.count()
