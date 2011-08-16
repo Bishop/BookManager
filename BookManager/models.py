@@ -32,9 +32,9 @@ class Book(ProtocolModel):
     def un_file_name(self):
         r = "{0} - {1} ({2})".format(self.author, self.title, self.year.year, )
         if self.edition_set.count():
-            r += ''.join([" [ISBN: {0} - {1}]".format(e.isbn, e.publisher) for e in self.edition_set.all()])
+            r += ''.join([" [ISBN {0} - {1}]".format(e.isbn, e.publisher) for e in self.edition_set.all()])
         return r
-
+    
 class File(ProtocolModel):
     book = models.ForeignKey(Book)
     path = models.CharField(max_length=200)
