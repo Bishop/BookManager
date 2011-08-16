@@ -17,9 +17,11 @@ class BookListView(ListView):
         query = query.annotate(Count('file'))
 
         if self.request.GET.has_key('keyword'):
-            query = query.filter(title__icontains=self.request.GET['keyword'])
+            query = query.filter(title__icontains=self.request.GET['keyword']).order_by('title')
             self.paginate_by = query.count()
             self.kwargs.setdefault('page', 1)
+        else:
+            query = query.order_by('-updated_at')
         return query
 
     def get_context_data(self, **kwargs):
