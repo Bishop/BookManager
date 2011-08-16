@@ -84,6 +84,7 @@
         </div>
 
         <div class="books_files">
+            <p>{% trans 'Universal File Name:' %} {{ book.un_file_name }}</p>
             <p>{% trans 'Files:' %}</p>
             <ul class="books_files">
                 {% for file in book.file_set.all %}
