@@ -121,6 +121,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # 'django.contrib.admindocs',
     'books.BookManager',
+    'books.account',
     'south',
 )
 
@@ -146,3 +147,5 @@ LOGGING = {
         },
     }
 }
+
+LOGIN_URL = '/account/login'
