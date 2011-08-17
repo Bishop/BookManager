@@ -53,11 +53,13 @@
 
 <div class="yui3-g">
     <div class="yui3-u">
+        {% block top_menu %}
         <ul id="app_menu">
             <li><a href="{% url home_page %}">{% trans 'Home' %}</a></li>
             <li><a href="{% url book_list %}">{% trans 'Books' %}</a></li>
             <li><a href="{% url author_list %}">{% trans 'Authors' %}</a></li>
         </ul>
+        {% endblock %}
     </div>
     <div class="yui3-u-1">
         <div class="yui3-g">
