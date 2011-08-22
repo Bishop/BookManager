@@ -48,6 +48,12 @@
             {{ book.author }}
         </div>
 
+        {% if book.cover %}
+        <div class="cover">
+            <img src="{{ book.cover.url }}" width="200">
+        </div>
+        {% endif %}
+
         <table class="details">
             <tr>
                 <th>{% trans 'Year:' %}</th>

@@ -52,6 +52,11 @@ div.books_files p {
     color: #999;
 }
 
+div.cover {
+    float: left;
+    margin-right: 2em;
+}
+
 table.details {
     font-size: 0.8em;
 }
@@ -59,6 +64,10 @@ table.details {
 table.details th {
     padding-right: 1em;
     color: #999;
+}
+
+div.books_files {
+    clear: left;
 }
 
 ul.books_files li {
