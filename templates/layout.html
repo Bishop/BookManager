@@ -58,6 +58,7 @@
             <li><a href="{% url home_page %}">{% trans 'Home' %}</a></li>
             <li><a href="{% url book_list %}">{% trans 'Books' %}</a></li>
             <li><a href="{% url author_list %}">{% trans 'Authors' %}</a></li>
+            <li><a href="{% url account_summary %}">{% if user.is_authenticated %}{{ user.username }}{% else %}{% trans 'Login' %}{% endif %}</a></li>
         </ul>
         {% endblock %}
     </div>
