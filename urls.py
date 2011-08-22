@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import patterns, include, url
-
+from django.conf import settings
 from django.contrib import admin
 from django.contrib import databrowse
 from django.views.generic.base import TemplateView
@@ -18,3 +18,10 @@ urlpatterns = patterns('',
     url(r'^account/', include('account.urls')),
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 )
+
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+            'document_root': settings.MEDIA_ROOT,
+        }),
+   )
