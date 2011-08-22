@@ -21,6 +21,7 @@ class Book(ProtocolModel):
     author = models.TextField()
     year = models.DateField()
     pages = models.IntegerField(**nullable)
+    cover = models.ImageField(upload_to='bc', **nullable)
 
     @permalink
     def get_absolute_url(self):
@@ -34,7 +35,7 @@ class Book(ProtocolModel):
         if self.edition_set.count():
             r += ''.join([" [ISBN {0} - {1}]".format(e.isbn, e.publisher) for e in self.edition_set.all()])
         return r
-    
+
 class File(ProtocolModel):
     book = models.ForeignKey(Book)
     path = models.CharField(max_length=200)
