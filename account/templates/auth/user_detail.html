@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% load url from future %}
+
+{% block content %}
+    <div id="profile">
+        <ul class="username">
+            <li>{{ object.username }}</li>
+            <li>{{ object.first_name }}</li>
+            <li>{{ object.last_name }}</li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block menu_system %}
+    <a href="{% url 'django.contrib.auth.views.logout' %}">Logout</a>
+{% endblock %}
